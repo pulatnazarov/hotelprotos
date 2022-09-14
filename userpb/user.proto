@@ -18,7 +18,11 @@ message DeleteUserRequest {
 }
 
 message GetUserRequest {
-  string user_id = 1;
+  oneof by {
+    string user_id = 1;
+    string email = 2;
+    string phone_number = 3;
+  }
 }
 
 message User {
