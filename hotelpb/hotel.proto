@@ -15,7 +15,10 @@ service HotelService {
 }
 
 message DeleteHotelRequest {
-  string id = 1;
+  oneof by {
+    string id = 1;
+    string owner_id = 2;
+  }
 }
 
 message GetHotelsRequest {
@@ -28,7 +31,10 @@ message Hotels {
 }
 
 message GetHotelRequest {
-  string id = 1;
+  oneof by {
+    string id = 1;
+    string admin_id = 2;
+  }
 }
 
 message Hotel {
