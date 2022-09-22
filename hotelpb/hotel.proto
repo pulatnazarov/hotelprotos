@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+package hotelpb;
+
+import "google/protobuf/empty.proto";
+
+option go_package = "github.com/pulatnazarov/hotelprotos/hotelpb";
+
+service HotelService {
+  rpc RegisterHotel(RegisterHotelRequest) returns (Hotel);
+  rpc GetHotel(GetHotelRequest) returns (Hotel);
+  rpc UpdateHotel(Hotel) returns (Hotel);
+  rpc DeleteHotel(DeleteHotelRequest) returns (google.protobuf.Empty);
+  rpc GetHotels(GetHotelsRequest) returns (Hotels);
+}
+
+message DeleteHotelRequest {
+  string id = 1;
+}
+
+message GetHotelsRequest {
+  int32 page = 1;
+  int32 limit = 2;
+}
+
+message Hotels {
+  repeated Hotel list = 1;
+}
+
+message GetHotelRequest {
+  string id = 1;
+}
+
+message Hotel {
+  string id = 1;
+  string name = 2;
+  uint32 star = 3;
+  string owner_id = 4;
+  string admin_id = 5;
+  string address = 6;
+  int32 budget = 7;
+}
+
+message RegisterHotelRequest {
+  string name = 1;
+  uint32 star = 2;
+  string owner_id = 3;
+  string admin_id = 4;
+  string address = 5;
+  int32 budget = 6;
+}
